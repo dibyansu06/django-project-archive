@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Todo App{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <header class="bg-blue-600 text-white">
+        <nav class="container mx-auto p-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold">Todo App</a>
+            <div>
+                <a href="/" class="px-4 py-2 hover:bg-blue-700 rounded">Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-6">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white mt-10 p-4 text-center">
+        &copy; 2025 Todo App. All rights reserved.
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    if (!confirm("Are you sure you want to delete this task?")) {
+                        event.preventDefault();
+                    }
+                });
+            });
+        });
+    </script>    
+</body>
+</html>
